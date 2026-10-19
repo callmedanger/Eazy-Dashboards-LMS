@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-main: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --brand-primary: #0B2A5B;
+    --brand-primary-light: #1E4A94;
+    --brand-accent: #2F6FDE;
+    --brand-soft: #F1F5F9;
+    --sidebar-bg: #0B2A5B;
+  }
+
+  .dark {
+    /* Blue and White Dark Theme */
+    --bg-main: #061530;
+    --card-bg: #0B2247;
+    --card-border: #1E3D6B;
+    --text-main: #FFFFFF;
+    --text-muted: #94A9C9;
+    --brand-primary: #3B82F6;
+    --brand-primary-light: #60A5FA;
+    --brand-accent: #38BDF8;
+    --brand-soft: #102A54;
+    --sidebar-bg: #040D1E;
+  }
+
+  * {
+    border-color: var(--card-border);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  [dir="rtl"] {
+    font-family: 'Noto Nastaliq Urdu', 'Inter', sans-serif;
+  }
+}
+
+/* Custom Utilities and Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.7);
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print,
+  nav,
+  aside,
+  header,
+  footer,
+  .print-hide {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .printable-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: 999999;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
